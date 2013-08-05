@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# DESCRIPTION
+# Defines global settings.
+
+# SETTINGS
+export BACKUP_NAME=`date "+%Y-%m-%d_%H-%M-%S"`
+export BACKUP_USER="bkuhlmann"
+export BACKUP_MACHINE="my_machine"
+export BACKUP_SERVER="backup.local"
+export BACKUP_ROOT="/path/to/backup/$BACKUP_MACHINE"
+export BACKUP_BASE="$BACKUP_ROOT/Base"
