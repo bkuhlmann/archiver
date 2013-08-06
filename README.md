@@ -59,6 +59,11 @@ Setting up your machine is required prior to performing a backup as the setup in
 * ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
   to the current user's home directory. See the settings/manifest.txt.example file for examples.
 
+# Troubleshooting
+
+* Rsync Error Code 23 - If you see this in the log, it is most likely because the source file/directory no longer exists.
+  Update your manifest.txt accordingly.
+
 # Contributions
 
 Read CONTRIBUTING for details.
