@@ -30,6 +30,22 @@ Master Version (unstable):
     git clone git://github.com/bkuhlmann/archiver.git
     cd archiver
 
+Applying machine-specific settings is required prior to performing a backup. The shell script (see Usage section below
+for details) will install templates to get you started but will require further customization. The following is a
+breakdown of each setting file and how to use it:
+
+* ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
+  settings/settings.sh.example file for examples). It consists of the following settings:
+    * BACKUP_NAME - The name used for each backup (in this case a datetime). Example: 2013-01-15_10-30-55.
+    * BACKUP_USER - The user account name used for both the current machine and backup server.
+    * BACKUP_MACHINE - The name of machine to be backed up. This is also used to create the root folder for all machine
+      backups and related logs.
+    * BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
+    * BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
+    * BACKUP_BASE - The base backup (i.e. initial backup) for current machine for which all other backups are based off of.
+* ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
+  to the current user's home directory. See the settings/manifest.txt.example file for examples.
+
 # Usage
 
 Type the following from the command line to run:
@@ -45,20 +61,7 @@ Running the run.sh script will present the following options:
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
 For example, executing "./run.sh s" will setup the machine for backup.
 
-Applying custom, machine-specific settings is required prior to performing a backup. The setup installs the
-following files:
-
-* ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
-  settings/settings.sh.example file for examples). It consists of the following settings:
-    * BACKUP_NAME - The name used for each backup (in this case a datetime). Example: 2013-01-15_10-30-55.
-    * BACKUP_USER - The user account name used for both the current machine and backup server.
-    * BACKUP_MACHINE - The name of machine to be backed up. This is also used to create the root folder for all machine
-      backups and related logs.
-    * BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
-    * BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
-    * BACKUP_BASE - The base backup (i.e. initial backup) for current machine for which all other backups are based off of.
-* ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
-  to the current user's home directory. See the settings/manifest.txt.example file for examples.
+## Cron
 
 Once backups are configured and running properly it might be a good idea to add this script to your
 [crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
@@ -67,9 +70,24 @@ Once backups are configured and running properly it might be a good idea to add 
 
 ...which translates to running the script at 1am every morning.
 
+## SSH
+
+It might also help to install your public key on the backup server so that cron does not have authentication
+issues when performing a backup. Assuming you have a public key located at the following location:
+
+    ~/.ssh/id_rsa.pub
+
+...you can then perform the following to install it on the backup server (assumes an authorized_key file does not
+already exists):
+
+    scp  ~/.ssh/id_rsa.pub bkuhlmann@archiver.local:.ssh/authorized_keys
+
+That's it! For more info on SSH key generation, check out the
+[GitHub Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys) page.
+
 # Troubleshooting
 
-* Rsync Error Code 23 - If you see this in the log, it is most likely because the source file/directory no longer exists.
+* Rsync Error Code 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
   Update your manifest.txt to fix accordingly.
 
 # Contributions
