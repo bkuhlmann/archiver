@@ -45,7 +45,8 @@ Running the run.sh script will present the following options:
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
 For example, executing "./run.sh s" will setup the machine for backup.
 
-Setting up your machine is required prior to performing a backup as the setup installs the following files:
+Applying custom, machine-specific settings is required prior to performing a backup. The setup installs the
+following files:
 
 * ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
   settings/settings.sh.example file for examples). It consists of the following settings:
@@ -59,10 +60,17 @@ Setting up your machine is required prior to performing a backup as the setup in
 * ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
   to the current user's home directory. See the settings/manifest.txt.example file for examples.
 
+Once backups are configured and running properly it might be a good idea to add this script to your
+[crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
+
+    * 1 * * * cd $HOME/Dropbox/Development/archiver && ./run.sh b 2>&1
+
+...which translates to running the script at 1am every morning.
+
 # Troubleshooting
 
 * Rsync Error Code 23 - If you see this in the log, it is most likely because the source file/directory no longer exists.
-  Update your manifest.txt accordingly.
+  Update your manifest.txt to fix accordingly.
 
 # Contributions
 
