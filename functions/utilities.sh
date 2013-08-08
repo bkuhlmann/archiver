@@ -27,7 +27,20 @@ function backup_log {
 }
 export -f backup_log
 
-function backup_files {
+function rsync_and_create_base {
+  rsync --archive \
+    --recursive \
+    --compress \
+    --delete \
+    --files-from="$HOME/.archiver/manifest.txt" \
+    --log-file="$BACKUP_LOG" \
+    --human-readable \
+    --verbose \
+    $HOME "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_BASE"
+}
+export -f rsync_and_create_base
+
+function rsync_and_link_base {
   rsync --archive \
     --recursive \
     --compress \
@@ -38,6 +51,15 @@ function backup_files {
     --human-readable \
     --verbose \
     $HOME "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH"
+}
+export -f rsync_and_link_base
+
+function backup_files {
+  if ssh "$BACKUP_USER@$BACKUP_SERVER" test -d "${BACKUP_BASE}"; then
+    rsync_and_link_base
+  else
+    rsync_and_create_base
+  fi
 }
 export -f backup_files
 
