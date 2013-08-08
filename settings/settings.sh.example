@@ -9,4 +9,5 @@ export BACKUP_USER="bkuhlmann"
 export BACKUP_MACHINE="my_machine"
 export BACKUP_SERVER="archiver.local"
 export BACKUP_ROOT="/path/to/backup/$BACKUP_MACHINE"
+export BACKUP_BASE="$BACKUP_ROOT/base"
 export BACKUP_LIMIT=7
