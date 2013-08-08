@@ -6,6 +6,7 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 
 * Uses rsync for reliable, compressed, and fast backups.
 * Uses date/time-stamped backup folders by default.
+* Enforces backup limits so only a max number of backups can exist.
 * Customizable settings for defining the local machine and remote server to backup to.
 * Customizable file manifest (whitelist) for defining what files and directories to backup.
 
@@ -22,7 +23,7 @@ Current Version (stable):
 
     git clone git://github.com/bkuhlmann/archiver.git
     cd archiver
-    git checkout v1.0.0
+    git checkout v2.0.0
 
 Master Version (unstable):
 
@@ -42,6 +43,7 @@ breakdown of each setting file and how to use it:
     * BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
     * BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
     * BACKUP_BASE - The base backup (i.e. initial backup) for current machine for which all other backups are based off of.
+    * BACKUP_LIMIT - The max number of backups to keep at a time.
 * ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
   to the current user's home directory. See the settings/manifest.txt.example file for examples.
 
