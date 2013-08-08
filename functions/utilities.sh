@@ -3,7 +3,6 @@
 # DESCRIPTION
 # Defines general utility functions.
 
-# Installs settings for performing backups.
 function install_settings {
   echo "\nInstalling settings..."
 
@@ -22,14 +21,12 @@ function install_settings {
 }
 export -f install_settings
 
-# Backs up log.
 function backup_log {
-  scp "$BACKUP_LOG" "$BACKUP_USER"@"$BACKUP_SERVER":"$BACKUP_PATH/backup.log"
+  scp "$BACKUP_LOG" "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH/backup.log"
   rm -f "$BACKUP_LOG"
 }
 export -f backup_log
 
-# Backs up files.
 function backup_files {
   rsync --archive \
     --recursive \
@@ -40,15 +37,40 @@ function backup_files {
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
-    $HOME "$BACKUP_USER"@"$BACKUP_SERVER":"$BACKUP_PATH"
+    $HOME "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH"
 }
 export -f backup_files
 
-# Backs up machine files and logs.
 function backup_machine {
   echo "Backup processing..."
   backup_files
   backup_log
+  clean_backups
   echo "Backup complete!"
 }
 export -f backup_machine
+
+function clean_backups {
+  echo "Cleaning backups..."
+
+  current_backup_count=$(ssh $BACKUP_USER@$BACKUP_SERVER ls -1 $BACKUP_ROOT | wc -l)
+
+  if [ "$current_backup_count" -gt "$BACKUP_LIMIT" ]; then
+    backup_base="$(basename $BACKUP_BASE)"
+    backup_overage_count=$(expr $current_backup_count - $BACKUP_LIMIT)
+    backups_for_cleaning=$(ssh $BACKUP_USER@$BACKUP_SERVER ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
+
+    for backup in $backups_for_cleaning; do
+      if [ $backup != $backup_base ]; then
+        echo "Deleting: $backup..."
+        ssh "$BACKUP_USER@$BACKUP_SERVER" "rm -rf $BACKUP_ROOT/$backup"
+        echo "Deleted: $backup."
+      fi
+    done
+  else
+    echo "Nothing to do."
+  fi
+
+  echo "Backup cleaning complete!"
+}
+export -f clean_backups

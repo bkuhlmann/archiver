@@ -27,6 +27,7 @@ if [ -z "$1" ]; then
     echo "\nArchiver Options:"
     echo "  s: Setup current machine."
     echo "  b: Backup to remote server."
+    echo "  c: Clean backups (enforces backup limit)."
     echo "  q: Quit/Exit."
     echo ''
     read -p "Enter selection: " response

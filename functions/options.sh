@@ -14,6 +14,9 @@ function process_option {
     'b')
       backup_machine
       break;;
+    'c')
+      clean_backups
+      break;;
     'q')
       break;;
   esac
