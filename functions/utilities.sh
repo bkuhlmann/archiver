@@ -22,7 +22,7 @@ function install_settings {
 export -f install_settings
 
 function backup_log {
-  scp -Cp "$BACKUP_LOG" "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH/backup.log"
+  scp -Cp "$BACKUP_LOG" "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH/backup.log"
   rm -f "$BACKUP_LOG"
 }
 export -f backup_log
@@ -36,7 +36,7 @@ function rsync_and_create_base {
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
-    $HOME "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_BASE"
+    $HOME "$BACKUP_SERVER_CONNECTION:$BACKUP_BASE"
 }
 export -f rsync_and_create_base
 
@@ -50,12 +50,12 @@ function rsync_and_link_base {
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
-    $HOME "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH"
+    $HOME "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH"
 }
 export -f rsync_and_link_base
 
 function backup_files {
-  if ssh "$BACKUP_USER@$BACKUP_SERVER" test -d "${BACKUP_BASE}"; then
+  if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
     rsync_and_link_base
   else
     rsync_and_create_base
@@ -75,17 +75,17 @@ export -f backup_machine
 function clean_backups {
   echo "Cleaning backups..."
 
-  current_backup_count=$(ssh $BACKUP_USER@$BACKUP_SERVER ls -1 $BACKUP_ROOT | wc -l)
+  current_backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
   if [ "$current_backup_count" -gt "$BACKUP_LIMIT" ]; then
     backup_base="$(basename $BACKUP_BASE)"
     backup_overage_count=$(expr $current_backup_count - $BACKUP_LIMIT)
-    backups_for_cleaning=$(ssh $BACKUP_USER@$BACKUP_SERVER ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
+    backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
     for backup in $backups_for_cleaning; do
       if [ $backup != $backup_base ]; then
         echo "Deleting: $backup..."
-        ssh "$BACKUP_USER@$BACKUP_SERVER" "rm -rf $BACKUP_ROOT/$backup"
+        ssh "$BACKUP_SERVER_CONNECTION" "rm -rf $BACKUP_ROOT/$backup"
         echo "Deleted: $backup."
       fi
     done
