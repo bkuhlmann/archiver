@@ -21,12 +21,6 @@ function install_settings {
 }
 export -f install_settings
 
-function backup_log {
-  scp -Cp "$BACKUP_LOG" "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH/backup.log"
-  rm -f "$BACKUP_LOG"
-}
-export -f backup_log
-
 function rsync_and_create_base {
   rsync --archive \
     --recursive \
@@ -54,20 +48,29 @@ function rsync_and_link_base {
 }
 export -f rsync_and_link_base
 
-function backup_files {
-  if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
-    rsync_and_link_base
-  else
-    rsync_and_create_base
-  fi
+# Backs up the current machine log to remote server.
+# Parameters:
+# $1 = Required. The backup directory path. Example: "/Backups/my_machine"
+function backup_log {
+  remote_log_path="$BACKUP_SERVER_CONNECTION:$1/backup.log"
+  scp -Cp "$BACKUP_LOG" "$remote_log_path"
+  rm -f "$BACKUP_LOG"
 }
-export -f backup_files
+export -f backup_log
 
 function backup_machine {
   echo "Backup processing..."
-  backup_files
-  backup_log
+
+  if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
+    rsync_and_link_base
+    backup_log "$BACKUP_PATH"
+  else
+    rsync_and_create_base
+    backup_log "$BACKUP_BASE"
+  fi
+
   clean_backups
+
   echo "Backup complete!"
 }
 export -f backup_machine
