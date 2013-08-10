@@ -22,7 +22,7 @@ function install_settings {
 export -f install_settings
 
 function backup_log {
-  scp "$BACKUP_LOG" "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH/backup.log"
+  scp -Cp "$BACKUP_LOG" "$BACKUP_USER@$BACKUP_SERVER:$BACKUP_PATH/backup.log"
   rm -f "$BACKUP_LOG"
 }
 export -f backup_log
