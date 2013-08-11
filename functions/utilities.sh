@@ -22,6 +22,14 @@ function install_settings {
 }
 export -f install_settings
 
+# Creates remote path on remote server.
+# Parameters:
+# $1 = Required. The remote directory path. Example: "/Backups/my_machine"
+function create_remote_path {
+  ssh "$BACKUP_SERVER_CONNECTION" mkdir -p "$1"
+}
+export -f create_remote_path
+
 function rsync_and_create_base {
   rsync --archive \
     --recursive \
@@ -63,9 +71,11 @@ function backup_machine {
   echo "Backup processing..."
 
   if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
+    create_remote_path "$BACKUP_PATH"
     rsync_and_link_base
     backup_log "$BACKUP_PATH"
   else
+    create_remote_path "$BACKUP_BASE"
     rsync_and_create_base
     backup_log "$BACKUP_BASE"
   fi
