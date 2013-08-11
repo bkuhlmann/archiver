@@ -82,7 +82,7 @@ issues when performing a backup. Assuming you have a public key located at the f
 ...you can then perform the following to install it on the backup server (assumes an authorized_key file does not
 already exists):
 
-    scp  ~/.ssh/id_rsa.pub bkuhlmann@archiver.local:.ssh/authorized_keys
+    scp  ~/.ssh/id_rsa.pub archiver@archiver.local:.ssh/authorized_keys
 
 That's it! For more info on SSH key generation, check out the
 [GitHub Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys) page.
