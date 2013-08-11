@@ -8,8 +8,11 @@
 
 # SETTINGS
 set -e # Exit if any command returns non-zero.
-if [ -e "$HOME/.archiver/settings.sh" ]; then
-  source "$HOME/.archiver/settings.sh"
+export ARCHIVER_HOME="$HOME/.archiver"
+export ARCHIVER_SETTINGS="$ARCHIVER_HOME/settings.sh"
+export ARCHIVER_MANIFEST="$ARCHIVER_HOME/manifest.txt"
+if [ -e "$ARCHIVER_SETTINGS" ]; then
+  source "$ARCHIVER_SETTINGS"
 fi
 export BACKUP_SERVER_CONNECTION="$BACKUP_USER@$BACKUP_SERVER"
 export BACKUP_PATH="$BACKUP_ROOT/$BACKUP_NAME"

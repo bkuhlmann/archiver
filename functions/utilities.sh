@@ -7,7 +7,7 @@ function install_settings {
   echo "\nInstalling settings..."
 
   for source_file in `ls -1 settings`; do
-    dest_file="$HOME/.archiver/${source_file%.*}"
+    dest_file="$ARCHIVER_HOME/${source_file%.*}"
 
     if [ -e "$dest_file" ]; then
       echo "  Exists: $dest_file"
@@ -26,7 +26,7 @@ function rsync_and_create_base {
     --recursive \
     --compress \
     --delete \
-    --files-from="$HOME/.archiver/manifest.txt" \
+    --files-from="$ARCHIVER_MANIFEST" \
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
@@ -39,7 +39,7 @@ function rsync_and_link_base {
     --recursive \
     --compress \
     --delete \
-    --files-from="$HOME/.archiver/manifest.txt" \
+    --files-from="$ARCHIVER_MANIFEST" \
     --link-dest="$BACKUP_BASE" \
     --log-file="$BACKUP_LOG" \
     --human-readable \
