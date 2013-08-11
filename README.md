@@ -55,8 +55,9 @@ Type the following from the command line to run:
 
 Running the run.sh script will present the following options:
 
-    s: Setup machine for backup.
-    b: Backup machine.
+    s: Setup current machine.
+    b: Backup to remote server.
+    c: Clean backups (enforces backup limit).
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
