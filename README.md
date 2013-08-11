@@ -89,6 +89,12 @@ That's it! For more info on SSH key generation, check out the
 
 # Troubleshooting
 
+* SSH Connection Closed - If using a OSX backup server this will happen when the user you are logging in as doesn't have
+  remote access permission. Here are the steps to fix:
+    * Login to the OSX backup server.
+    * Open System Preferences
+    * Click on Sharing.
+    * Enable Remote Login and Remote Management for all users or just the users you want to allow for backup access.
 * Rsync Error 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
   Update your manifest.txt to fix accordingly.
 
