@@ -5,7 +5,7 @@
 
 # SETTINGS
 export BACKUP_NAME=`date "+%Y-%m-%d_%H-%M-%S"`
-export BACKUP_USER="bkuhlmann"
+export BACKUP_USER="archiver"
 export BACKUP_MACHINE="my_machine"
 export BACKUP_SERVER="archiver.local"
 export BACKUP_ROOT="/path/to/backup/$BACKUP_MACHINE"
