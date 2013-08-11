@@ -12,6 +12,7 @@ function install_settings {
     if [ -e "$dest_file" ]; then
       echo "  Exists: $dest_file"
     else
+      mkdir -p "$ARCHIVER_HOME"
       cp "settings/$source_file" "$dest_file"
       echo "  + $dest_file"
     fi
