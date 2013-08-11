@@ -61,11 +61,11 @@ Running the run.sh script will present the following options:
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
-For example, executing "./run.sh s" will setup the machine for backup.
+For example, executing "./run.sh s" will perform setup for the current machine.
 
 ## Cron
 
-Once backups are configured and running properly it might be a good idea to add this script to your
+Once backups are configured and running properly it is a good idea to add this script to your
 [crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
 
     * 1 * * * cd $HOME/Dropbox/Development/archiver && ./run.sh b 2>&1
@@ -74,7 +74,7 @@ Once backups are configured and running properly it might be a good idea to add 
 
 ## SSH
 
-It might also help to install your public key on the backup server so that cron does not have authentication
+It is a good idea to install your public key on the backup server so that cron does not have authentication
 issues when performing a backup. Assuming you have a public key located at the following location:
 
     ~/.ssh/id_rsa.pub
@@ -89,7 +89,7 @@ That's it! For more info on SSH key generation, check out the
 
 # Troubleshooting
 
-* Rsync Error Code 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
+* Rsync Error 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
   Update your manifest.txt to fix accordingly.
 
 # Contributions
