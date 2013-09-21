@@ -3,7 +3,7 @@
 # DESCRIPTION
 # Defines general utility functions.
 
-function install_settings {
+function install_settings() {
   echo "\nInstalling settings..."
 
   for source_file in `ls -1 settings`; do
@@ -25,12 +25,12 @@ export -f install_settings
 # Creates remote path on remote server.
 # Parameters:
 # $1 = Required. The remote directory path. Example: "/Backups/my_machine"
-function create_remote_path {
+function create_remote_path() {
   ssh "$BACKUP_SERVER_CONNECTION" mkdir -p "$1"
 }
 export -f create_remote_path
 
-function rsync_and_create_base {
+function rsync_and_create_base() {
   rsync --archive \
     --recursive \
     --compress \
@@ -43,7 +43,7 @@ function rsync_and_create_base {
 }
 export -f rsync_and_create_base
 
-function rsync_and_link_base {
+function rsync_and_link_base() {
   rsync --archive \
     --recursive \
     --compress \
@@ -60,14 +60,14 @@ export -f rsync_and_link_base
 # Backs up the current machine log to remote server.
 # Parameters:
 # $1 = Required. The backup directory path. Example: "/Backups/my_machine"
-function backup_log {
+function backup_log() {
   remote_log_path="$BACKUP_SERVER_CONNECTION:$1/backup.log"
   scp -Cp "$BACKUP_LOG" "$remote_log_path"
   rm -f "$BACKUP_LOG"
 }
 export -f backup_log
 
-function backup_machine {
+function backup_machine() {
   echo "Backup processing..."
 
   if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
@@ -86,7 +86,7 @@ function backup_machine {
 }
 export -f backup_machine
 
-function clean_backups {
+function clean_backups() {
   echo "Cleaning backups..."
 
   current_backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
