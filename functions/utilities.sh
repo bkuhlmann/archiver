@@ -31,10 +31,16 @@ function create_remote_path() {
 export -f create_remote_path
 
 function rsync_and_create_base() {
-  rsync --archive \
+  rsync \
+    --archive \
     --recursive \
     --compress \
+    --numeric-ids \
+    --links \
+    --hard-links \
     --delete \
+    --delete-excluded \
+    --one-file-system \
     --files-from="$ARCHIVER_MANIFEST" \
     --log-file="$BACKUP_LOG" \
     --human-readable \
@@ -44,10 +50,16 @@ function rsync_and_create_base() {
 export -f rsync_and_create_base
 
 function rsync_and_link_base() {
-  rsync --archive \
+  rsync \
+    --archive \
     --recursive \
     --compress \
+    --numeric-ids \
+    --links \
+    --hard-links \
     --delete \
+    --delete-excluded \
+    --one-file-system \
     --files-from="$ARCHIVER_MANIFEST" \
     --link-dest="$BACKUP_BASE" \
     --log-file="$BACKUP_LOG" \
