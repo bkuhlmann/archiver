@@ -45,7 +45,7 @@ function rsync_and_create_base() {
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
-    $HOME "$BACKUP_SERVER_CONNECTION:$BACKUP_BASE"
+    / "$BACKUP_SERVER_CONNECTION:$BACKUP_BASE"
 }
 export -f rsync_and_create_base
 
@@ -65,7 +65,7 @@ function rsync_and_link_base() {
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
-    $HOME "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH"
+    / "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH"
 }
 export -f rsync_and_link_base
 
