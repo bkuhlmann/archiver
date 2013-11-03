@@ -30,6 +30,7 @@ function create_remote_path() {
 }
 export -f create_remote_path
 
+# Creates a full backup.
 function rsync_full() {
   rsync \
     --archive \
@@ -49,8 +50,11 @@ function rsync_full() {
 }
 export -f rsync_full
 
+# Creates an incremental backup based on previous backup.
+# Parameters:
+# $1 = Required. The previous backup name.
 function rsync_incremental() {
-  previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
+  previous_backup="$1"
 
   rsync \
     --archive \
@@ -91,7 +95,8 @@ function backup_machine() {
     rsync_full
   else
     echo "Creating incremental backup..."
-    rsync_incremental
+    previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
+    rsync_incremental "$previous_backup"
   fi
 
   backup_log "$BACKUP_PATH"
