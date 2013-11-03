@@ -30,7 +30,7 @@ function create_remote_path() {
 }
 export -f create_remote_path
 
-function rsync_and_create_base() {
+function rsync_full() {
   rsync \
     --archive \
     --recursive \
@@ -42,32 +42,34 @@ function rsync_and_create_base() {
     --delete-excluded \
     --one-file-system \
     --files-from="$ARCHIVER_MANIFEST" \
-    --log-file="$BACKUP_LOG" \
-    --human-readable \
-    --verbose \
-    / "$BACKUP_SERVER_CONNECTION:$BACKUP_BASE"
-}
-export -f rsync_and_create_base
-
-function rsync_and_link_base() {
-  rsync \
-    --archive \
-    --recursive \
-    --compress \
-    --numeric-ids \
-    --links \
-    --hard-links \
-    --delete \
-    --delete-excluded \
-    --one-file-system \
-    --files-from="$ARCHIVER_MANIFEST" \
-    --link-dest="$BACKUP_BASE" \
     --log-file="$BACKUP_LOG" \
     --human-readable \
     --verbose \
     / "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH"
 }
-export -f rsync_and_link_base
+export -f rsync_full
+
+function rsync_incremental() {
+  previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
+
+  rsync \
+    --archive \
+    --recursive \
+    --compress \
+    --numeric-ids \
+    --links \
+    --hard-links \
+    --delete \
+    --delete-excluded \
+    --one-file-system \
+    --files-from="$ARCHIVER_MANIFEST" \
+    --link-dest="$previous_backup" \
+    --log-file="$BACKUP_LOG" \
+    --human-readable \
+    --verbose \
+    / "$BACKUP_SERVER_CONNECTION:$BACKUP_PATH"
+}
+export -f rsync_incremental
 
 # Backs up the current machine log to remote server.
 # Parameters:
@@ -80,18 +82,19 @@ function backup_log() {
 export -f backup_log
 
 function backup_machine() {
-  echo "Backup processing..."
+  backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
-  if ssh "$BACKUP_SERVER_CONNECTION" test -d "${BACKUP_BASE}"; then
-    create_remote_path "$BACKUP_PATH"
-    rsync_and_link_base
-    backup_log "$BACKUP_PATH"
+  create_remote_path "$BACKUP_PATH"
+
+  if [ "$backup_count" -eq '0' ]; then
+    echo "Creating full backup..."
+    rsync_full
   else
-    create_remote_path "$BACKUP_BASE"
-    rsync_and_create_base
-    backup_log "$BACKUP_BASE"
+    echo "Creating incremental backup..."
+    rsync_incremental
   fi
 
+  backup_log "$BACKUP_PATH"
   clean_backups
 
   echo "Backup complete!"
@@ -101,24 +104,21 @@ export -f backup_machine
 function clean_backups() {
   echo "Cleaning backups..."
 
-  current_backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
+  backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
-  if [ "$current_backup_count" -gt "$BACKUP_LIMIT" ]; then
-    backup_base="$(basename $BACKUP_BASE)"
-    backup_overage_count=$(expr $current_backup_count - $BACKUP_LIMIT)
+  if [ "$backup_count" -gt "$BACKUP_LIMIT" ]; then
+    backup_overage_count=$(expr $backup_count - $BACKUP_LIMIT)
     backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
     for backup in $backups_for_cleaning; do
-      if [ $backup != $backup_base ]; then
-        echo "Deleting: $backup..."
-        ssh "$BACKUP_SERVER_CONNECTION" "rm -rf $BACKUP_ROOT/$backup"
-        echo "Deleted: $backup."
-      fi
+      echo "Deleting: $backup..."
+      ssh "$BACKUP_SERVER_CONNECTION" "rm -rf $BACKUP_ROOT/$backup"
+      echo "Deleted: $backup."
     done
   else
     echo "Nothing to do."
   fi
 
-  echo "Backup cleaning complete!"
+  echo "Backups cleaned!"
 }
 export -f clean_backups
