@@ -123,7 +123,5 @@ function clean_backups() {
   else
     echo "Nothing to do."
   fi
-
-  echo "Backups cleaned!"
 }
 export -f clean_backups
