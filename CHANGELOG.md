@@ -1,3 +1,9 @@
+# v3.0.0
+
+* Fixed backup root path to be / instead of $HOME.
+* Fixed incremental backups so they are based off the previous backup rather than the "base" directory.
+* Added the --numeric-ids, --links, --hard-links, --delete-excluded, and --one-file-system rsync options.
+
 # v2.1.0
 
 * Fixed bug where backup log would not be copied correctly to the 'base' backup folder for new machine backups.

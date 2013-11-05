@@ -7,8 +7,9 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 * Uses rsync for reliable, compressed, and fast backups.
 * Uses date/time-stamped backup folders by default.
 * Enforces backup limits so only a max number of backups can exist.
-* Customizable settings for defining the local machine and remote server to backup to.
-* Customizable file manifest (whitelist) for defining what files and directories to backup.
+* Supports automatic full and incremental backups.
+* Supports customizable settings for defining the local machine and remote server to backup to.
+* Supports customizable file manifest (whitelist) for defining what files and directories to backup.
 
 # Requirements
 
@@ -23,7 +24,7 @@ Current Version (stable):
 
     git clone git://github.com/bkuhlmann/archiver.git
     cd archiver
-    git checkout v2.1.0
+    git checkout v3.0.0
 
 Master Version (unstable):
 
@@ -42,10 +43,9 @@ breakdown of each setting file and how to use it:
       backups and related logs.
     * BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
     * BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
-    * BACKUP_BASE - The base backup (i.e. initial backup) for current machine for which all other backups are based off of.
     * BACKUP_LIMIT - The max number of backups to keep at a time.
-* ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Only list a files or directories relative
-  to the current user's home directory. See the settings/manifest.txt.example file for examples.
+* ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute file/directory paths based off
+  the root directory (i.e. '/'). See the settings/manifest.txt.example file for examples.
 
 # Usage
 
@@ -61,7 +61,7 @@ Running the run.sh script will present the following options:
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
-For example, executing "./run.sh s" will perform setup for the current machine.
+For example, executing `./run.sh s` will perform setup for the current machine.
 
 ## Cron
 
