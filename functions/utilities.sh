@@ -9,7 +9,7 @@ function install_settings() {
   for source_file in `ls -1 settings`; do
     local dest_file="$ARCHIVER_HOME/${source_file%.*}"
 
-    if [ -e "$dest_file" ]; then
+    if [[ -e "$dest_file" ]]; then
       echo "  Exists: $dest_file"
     else
       mkdir -p "$ARCHIVER_HOME"
@@ -90,7 +90,7 @@ function backup_machine() {
 
   create_remote_path "$BACKUP_PATH"
 
-  if [ "$backup_count" -eq '0' ]; then
+  if [[ "$backup_count" == '0' ]]; then
     echo "Creating full backup..."
     rsync_full
   else
@@ -111,7 +111,7 @@ function clean_backups() {
 
   local backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
-  if [ "$backup_count" -gt "$BACKUP_LIMIT" ]; then
+  if [[ "$backup_count" -gt "$BACKUP_LIMIT" ]]; then
     local backup_overage_count=$(($backup_count - $BACKUP_LIMIT))
     local backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
