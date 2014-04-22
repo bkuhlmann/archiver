@@ -7,7 +7,7 @@ function install_settings() {
   echo "\nInstalling settings..."
 
   for source_file in `ls -1 settings`; do
-    dest_file="$ARCHIVER_HOME/${source_file%.*}"
+    local dest_file="$ARCHIVER_HOME/${source_file%.*}"
 
     if [ -e "$dest_file" ]; then
       echo "  Exists: $dest_file"
@@ -54,7 +54,7 @@ export -f rsync_full
 # Parameters:
 # $1 = Required. The previous backup name.
 function rsync_incremental() {
-  previous_backup="$1"
+  local previous_backup="$1"
 
   rsync \
     --archive \
@@ -79,14 +79,14 @@ export -f rsync_incremental
 # Parameters:
 # $1 = Required. The backup directory path. Example: "/Backups/my_machine"
 function backup_log() {
-  remote_log_path="$BACKUP_SERVER_CONNECTION:$1/backup.log"
+  local remote_log_path="$BACKUP_SERVER_CONNECTION:$1/backup.log"
   scp -Cp "$BACKUP_LOG" "$remote_log_path"
   rm -f "$BACKUP_LOG"
 }
 export -f backup_log
 
 function backup_machine() {
-  backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
+  local backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
   create_remote_path "$BACKUP_PATH"
 
@@ -95,7 +95,7 @@ function backup_machine() {
     rsync_full
   else
     echo "Creating incremental backup..."
-    previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
+    local previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
     rsync_incremental "$previous_backup"
   fi
 
@@ -109,11 +109,11 @@ export -f backup_machine
 function clean_backups() {
   echo "Cleaning backups..."
 
-  backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
+  local backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
   if [ "$backup_count" -gt "$BACKUP_LIMIT" ]; then
-    backup_overage_count=$(($backup_count - $BACKUP_LIMIT))
-    backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
+    local backup_overage_count=$(($backup_count - $BACKUP_LIMIT))
+    local backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
     for backup in $backups_for_cleaning; do
       echo "Deleting: $backup..."
