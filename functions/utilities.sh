@@ -6,7 +6,7 @@
 function install_settings() {
   echo "\nInstalling settings..."
 
-  for source_file in `ls -1 settings`; do
+  for source_file in $(ls -1 settings); do
     local dest_file="$ARCHIVER_HOME/${source_file%.*}"
 
     if [[ -e "$dest_file" ]]; then

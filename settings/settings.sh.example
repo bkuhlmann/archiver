@@ -4,7 +4,7 @@
 # Defines global settings.
 
 # SETTINGS
-export BACKUP_NAME=`date "+%Y-%m-%d_%H-%M-%S"`
+export BACKUP_NAME=$(date "+%Y-%m-%d_%H-%M-%S")
 export BACKUP_USER="archiver"
 export BACKUP_MACHINE="my_machine"
 export BACKUP_SERVER="archiver.local"
