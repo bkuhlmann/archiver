@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # DESCRIPTION
 # Defines general utility functions.
@@ -112,7 +112,7 @@ function clean_backups() {
   backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
   if [ "$backup_count" -gt "$BACKUP_LIMIT" ]; then
-    backup_overage_count=$(expr $backup_count - $BACKUP_LIMIT)
+    backup_overage_count=$(($backup_count - $BACKUP_LIMIT))
     backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
     for backup in $backups_for_cleaning; do
