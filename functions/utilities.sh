@@ -4,21 +4,21 @@
 # Defines general utility functions.
 
 function install_settings() {
-  echo "\nInstalling settings..."
+  printf "\nInstalling settings...\n"
 
   for source_file in $(ls -1 settings); do
     local dest_file="$ARCHIVER_HOME/${source_file%.*}"
 
     if [[ -e "$dest_file" ]]; then
-      echo "  Exists: $dest_file"
+      printf "  Exists: $dest_file\n"
     else
       mkdir -p "$ARCHIVER_HOME"
       cp "settings/$source_file" "$dest_file"
-      echo "  + $dest_file"
+      printf "  + $dest_file\n"
     fi
   done
 
-  echo "Settings installed! See README for customization."
+  printf "Settings installed! See README for customization.\n"
 }
 export -f install_settings
 
@@ -91,10 +91,10 @@ function backup_machine() {
   create_remote_path "$BACKUP_PATH"
 
   if [[ "$backup_count" == '0' ]]; then
-    echo "Creating full backup..."
+    printf "Creating full backup...\n"
     rsync_full
   else
-    echo "Creating incremental backup..."
+    printf "Creating incremental backup...\n"
     local previous_backup=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | tail -n 1)
     rsync_incremental "$previous_backup"
   fi
@@ -102,12 +102,12 @@ function backup_machine() {
   backup_log "$BACKUP_PATH"
   clean_backups
 
-  echo "Backup complete!"
+  printf "Backup complete!\n"
 }
 export -f backup_machine
 
 function clean_backups() {
-  echo "Cleaning backups..."
+  printf "Cleaning backups...\n"
 
   local backup_count=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | wc -l)
 
@@ -116,12 +116,12 @@ function clean_backups() {
     local backups_for_cleaning=$(ssh $BACKUP_SERVER_CONNECTION ls -1 $BACKUP_ROOT | head -n $backup_overage_count)
 
     for backup in $backups_for_cleaning; do
-      echo "Deleting: $backup..."
+      printf "Deleting: $backup...\n"
       ssh "$BACKUP_SERVER_CONNECTION" "rm -rf $BACKUP_ROOT/$backup"
-      echo "Deleted: $backup."
+      printf "Deleted: $backup.\n"
     done
   else
-    echo "Nothing to do."
+    printf "Nothing to do.\n"
   fi
 }
 export -f clean_backups
