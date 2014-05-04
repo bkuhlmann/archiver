@@ -1,3 +1,12 @@
+# v3.1.0
+
+* Fixed bash script header.
+* Refactored scripts to enable better error checking.
+* Refactored scripts to explicitly define local variables where appropriate.
+* Refactored scripts to use double backets [[...]] instead of single brackets [...] for if statements.
+* Refactored scripts to use  instead of backticks  for command substitution.
+* Refactored scripts to use printf instead of echo.
+
 # v3.0.0
 
 * Fixed backup root path to be / instead of $HOME.

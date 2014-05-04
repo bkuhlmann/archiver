@@ -24,7 +24,7 @@ Current Version (stable):
 
     git clone git://github.com/bkuhlmann/archiver.git
     cd archiver
-    git checkout v3.0.0
+    git checkout v3.1.0
 
 Master Version (unstable):
 
@@ -65,7 +65,7 @@ For example, executing `./run.sh s` will perform setup for the current machine.
 
 ## Cron
 
-Once backups are configured and running properly it is a good idea to add this script to your
+Once backups are configured and running properly, add this script to your
 [crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
 
     * 1 * * * cd $HOME/Dropbox/Development/archiver && ./run.sh b 2>&1
@@ -74,8 +74,8 @@ Once backups are configured and running properly it is a good idea to add this s
 
 ## SSH
 
-It is a good idea to install your public key on the backup server so that cron does not have authentication
-issues when performing a backup. Assuming you have a public key located at the following location:
+To bypass the password prompt, install your public key on the backup server so cron does not have authentication
+issues when performing a backup (assuming you have a public key located at the following location):
 
     ~/.ssh/id_rsa.pub
 
