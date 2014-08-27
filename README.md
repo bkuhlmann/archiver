@@ -6,12 +6,12 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 
 # Features
 
-* Uses rsync for reliable, compressed, and fast backups.
-* Uses date/time-stamped backup folders by default.
-* Enforces backup limits so only a max number of backups can exist.
-* Supports automatic full and incremental backups.
-* Supports customizable settings for defining the local machine and remote server to backup to.
-* Supports customizable file manifest (whitelist) for defining what files and directories to backup.
+- Uses rsync for reliable, compressed, and fast backups.
+- Uses date/time-stamped backup folders by default.
+- Enforces backup limits so only a max number of backups can exist.
+- Supports automatic full and incremental backups.
+- Supports customizable settings for defining the local machine and remote server to backup to.
+- Supports customizable file manifest (whitelist) for defining what files and directories to backup.
 
 # Requirements
 
@@ -37,16 +37,16 @@ Applying machine-specific settings is required prior to performing a backup. The
 for details) will install templates to get you started but will require further customization. The following is a
 breakdown of each setting file and how to use it:
 
-* ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
+- ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
   settings/settings.sh.example file for examples). It consists of the following settings:
-    * BACKUP_NAME - The name used for each backup (in this case a datetime). Example: 2013-01-15_10-30-55.
-    * BACKUP_USER - The user account name used for both the current machine and backup server.
-    * BACKUP_MACHINE - The name of machine to be backed up. This is also used to create the root folder for all machine
+    - BACKUP_NAME - The name used for each backup (in this case a datetime). Example: 2013-01-15_10-30-55.
+    - BACKUP_USER - The user account name used for both the current machine and backup server.
+    - BACKUP_MACHINE - The name of machine to be backed up. This is also used to create the root folder for all machine
       backups and related logs.
-    * BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
-    * BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
-    * BACKUP_LIMIT - The max number of backups to keep at a time.
-* ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute file/directory paths based off
+    - BACKUP_SERVER - The backup server network name or IP address (where all backups will be stored).
+    - BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
+    - BACKUP_LIMIT - The max number of backups to keep at a time.
+- ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute file/directory paths based off
   the root directory (i.e. '/'). See the settings/manifest.txt.example file for examples.
 
 # Usage
@@ -70,7 +70,7 @@ For example, executing `./run.sh s` will perform setup for the current machine.
 Once backups are configured and running properly, add this script to your
 [crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
 
-    * 1 * * * cd $HOME/Dropbox/Development/archiver && ./run.sh b 2>&1
+    - 1 - - - cd $HOME/Dropbox/Development/archiver && ./run.sh b 2>&1
 
 ...which translates to running the script at 1am every morning.
 
@@ -91,13 +91,13 @@ That's it! For more info on SSH key generation, check out the
 
 # Troubleshooting
 
-* SSH Connection Closed - If using a OSX backup server this will happen when the user you are logging in as doesn't have
+- SSH Connection Closed - If using a OSX backup server this will happen when the user you are logging in as doesn't have
   remote access permission. Here are the steps to fix:
-    * Login to the OSX backup server.
-    * Open System Preferences
-    * Click on Sharing.
-    * Enable Remote Login and Remote Management for all users or just the users you want to allow for backup access.
-* Rsync Error 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
+    - Login to the OSX backup server.
+    - Open System Preferences
+    - Click on Sharing.
+    - Enable Remote Login and Remote Management for all users or just the users you want to allow for backup access.
+- Rsync Error 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
   Update your manifest.txt to fix accordingly.
 
 # Contributions
