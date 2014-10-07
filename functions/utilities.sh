@@ -34,6 +34,7 @@ export -f create_remote_path
 function rsync_full() {
   rsync \
     --archive \
+    --perms \
     --recursive \
     --compress \
     --numeric-ids \
@@ -58,6 +59,7 @@ function rsync_incremental() {
 
   rsync \
     --archive \
+    --perms \
     --recursive \
     --compress \
     --numeric-ids \
