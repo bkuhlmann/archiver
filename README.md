@@ -106,11 +106,11 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 # Credits
 
-Developed by [Brooke Kuhlmann](http://www.alchemists.io) at [Alchemists](http://www.alchemists.io).
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
 
 # License
 
-Copyright (c) 2013 [Alchemists](http://www.alchemists.io).
+Copyright (c) 2013 [Alchemists](https://www.alchemists.io).
 Read the [LICENSE](LICENSE.md) for details.
 
 # History
