@@ -1,3 +1,9 @@
+# v3.2.0 (2015-01-01)
+
+- Updated README, CHANGELOG, LICENSE, and CONTRIBUTING documentation.
+- Added Bash strict mode.
+- Added preservation of file permissions.
+
 # v3.1.0 (2014-05-04)
 
 - Fixed bash script header.

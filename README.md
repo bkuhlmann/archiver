@@ -26,7 +26,7 @@ Current Version (stable):
 
     git clone git://github.com/bkuhlmann/archiver.git
     cd archiver
-    git checkout v3.1.0
+    git checkout v3.2.0
 
 Master Version (unstable):
 
