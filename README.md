@@ -100,13 +100,14 @@ That's it! For more info on SSH key generation, check out the
 - Rsync Error 23 - If you see this in the backup log, it is most likely because the source file/directory no longer exists.
   Update your manifest.txt to fix accordingly.
 
+# Code of Conduct
+
+Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By participating in this project
+you agree to abide by its terms.
+
 # Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-# Credits
-
-Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
 
 # License
 
@@ -116,3 +117,7 @@ Read the [LICENSE](LICENSE.md) for details.
 # History
 
 Read the [CHANGELOG](CHANGELOG.md) for details.
+
+# Credits
+
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
