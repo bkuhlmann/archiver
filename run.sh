@@ -22,9 +22,9 @@ export BACKUP_SERVER_CONNECTION="$BACKUP_USER@$BACKUP_SERVER"
 export BACKUP_PATH="$BACKUP_ROOT/$BACKUP_NAME"
 export BACKUP_LOG="/tmp/$BACKUP_MACHINE-$BACKUP_NAME-backup.txt"
 
-# FUNCTIONS
-source functions/utilities.sh
-source functions/options.sh
+# LIBRARY
+source lib/utilities.sh
+source lib/options.sh
 
 # EXECUTION
 while true; do
