@@ -4,6 +4,25 @@
 
 Shell scripts for the automated backup of UNIX-based operation systems.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Table of Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Usage](#usage)
+    - [Cron](#cron)
+    - [SSH](#ssh)
+    - [Troubleshooting](#troubleshooting)
+- [Code of Conduct](#code-of-conduct)
+- [Contributions](#contributions)
+- [License](#license)
+- [History](#history)
+- [Credits](#credits)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Features
 
 - Uses rsync for reliable, compressed, and fast backups.
@@ -89,7 +108,7 @@ already exists):
 That's it! For more info on SSH key generation, check out the
 [GitHub Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys) page.
 
-# Troubleshooting
+## Troubleshooting
 
 - SSH Connection Closed - If using a OSX backup server this will happen when the user you are logging in as doesn't have
   remote access permission. Here are the steps to fix:
