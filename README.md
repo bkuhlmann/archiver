@@ -1,5 +1,7 @@
 # Archiver
 
+[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
+
 Shell scripts for the automated backup of UNIX-based operation systems.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
