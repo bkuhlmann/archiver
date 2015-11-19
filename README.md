@@ -4,24 +4,24 @@
 
 Shell scripts for the automated backup of UNIX-based operation systems.
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- Tocer[start]: Auto-generated, don't remove. -->
+
 # Table of Contents
 
 - [Features](#features)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
-    - [Cron](#cron)
-    - [SSH](#ssh)
-    - [Troubleshooting](#troubleshooting)
+  - [Cron](#cron)
+  - [SSH](#ssh)
+  - [Troubleshooting](#troubleshooting)
 - [Code of Conduct](#code-of-conduct)
 - [Contributions](#contributions)
 - [License](#license)
 - [History](#history)
 - [Credits](#credits)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- Tocer[finish]: Auto-generated, don't remove. -->
 
 # Features
 
