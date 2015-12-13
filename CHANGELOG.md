@@ -1,3 +1,17 @@
+# v3.3.0 (2015-12-13)
+
+- Fixed hanging script with invalid option.
+- Added Bashsmith generation to README history.
+- Added Patreon badge to README.
+- Added code of conduct documentation.
+- Added project name to README.
+- Added table of contents to README.
+- Updated Code of Conduct 1.3.0.
+- Updated README with Tocer generated Table of Contents.
+- Removed GitTip badge from README.
+- Refactored script source from functions to lib folder.
+- Refactored shell scripts to remove deprecated function definition.
+
 # v3.2.0 (2015-01-01)
 
 - Updated README, CHANGELOG, LICENSE, and CONTRIBUTING documentation.
