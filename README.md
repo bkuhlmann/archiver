@@ -43,13 +43,13 @@ Open a terminal window and execute one of the following setup sequences dependin
 
 Current Version (stable):
 
-    git clone git://github.com/bkuhlmann/archiver.git
+    git clone https://github.com/bkuhlmann/archiver.git
     cd archiver
     git checkout v3.3.0
 
 Master Version (unstable):
 
-    git clone git://github.com/bkuhlmann/archiver.git
+    git clone https://github.com/bkuhlmann/archiver.git
     cd archiver
 
 Applying machine-specific settings is required prior to performing a backup. The shell script (see Usage section below
