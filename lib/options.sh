@@ -9,19 +9,14 @@
 process_option() {
   case $1 in
     's')
-      install_settings
-      break;;
+      install_settings;;
     'b')
-      backup_machine
-      break;;
+      backup_machine;;
     'c')
-      clean_backups
-      break;;
-    'q')
-      break;;
+      clean_backups;;
+    'q');;
     *)
-      printf "ERROR: Invalid option.\n"
-      break;;
+      printf "ERROR: Invalid option.\n";;
   esac
 }
 export -f process_option
