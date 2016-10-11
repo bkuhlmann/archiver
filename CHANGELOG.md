@@ -1,3 +1,14 @@
+# v4.0.0 (2016-10-11)
+
+- Fixed Bash script header to dynamically load correct environment.
+- Fixed contributing guideline links.
+- Added GitHub issue and pull request templates.
+- Updated GitHub issue and pull request templates.
+- Updated README cloning instructions to use HTTPS scheme.
+- Updated to Code of Conduct, Version 1.4.0.
+- Removed `run.sh` (use `bin/run` instead).
+- Refactored run scripts to use break statements.
+
 # v3.3.0 (2015-12-13)
 
 - Fixed hanging script with invalid option.
