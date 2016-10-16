@@ -15,6 +15,7 @@ Shell scripts for the automated backup of UNIX-based operation systems.
   - [Cron](#cron)
   - [SSH](#ssh)
   - [Troubleshooting](#troubleshooting)
+- [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
 - [Contributions](#contributions)
 - [License](#license)
@@ -124,6 +125,14 @@ That's it! For more info on SSH key generation, check out the
       for backup access.
 - Rsync Error 23 - If you see this in the backup log, it is most likely because the source
   file/directory no longer exists. Update your manifest.txt to fix accordingly.
+
+# Versioning
+
+Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
+
+- Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
+- Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
+- Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 
 # Code of Conduct
 
