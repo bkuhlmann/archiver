@@ -9,7 +9,7 @@ set -o errexit # Abort script at first error, when a command exits with non-zero
 set -o pipefail # Returns exit status of the last command in the pipe that returned a non-zero return value.
 IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
 
-export ARCHIVER_HOME="$HOME/.archiver"
+export ARCHIVER_HOME="$HOME/.config/archiver"
 export ARCHIVER_SETTINGS="$ARCHIVER_HOME/settings.sh"
 export ARCHIVER_MANIFEST="$ARCHIVER_HOME/manifest.txt"
 if [ -e "$ARCHIVER_SETTINGS" ]; then

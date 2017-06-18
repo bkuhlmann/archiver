@@ -58,7 +58,7 @@ Applying machine-specific settings is required prior to performing a backup. The
 Usage section below for details) will install templates to get you started but will require further
 customization. The following is a breakdown of each setting file and how to use it:
 
-- ~/.archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
+- ~/.config/archiver/settings.sh - Informs the Archiver how and where to perform the backup (see the
   settings/settings.sh.example file for examples). It consists of the following settings:
     - BACKUP_NAME - The name used for each backup (in this case a datetime). Example:
       2013-01-15_10-30-55.
@@ -69,7 +69,7 @@ customization. The following is a breakdown of each setting file and how to use 
       stored).
     - BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
     - BACKUP_LIMIT - The max number of backups to keep at a time.
-- ~/.archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute
+- ~/.config/archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute
   file/directory paths based off the root directory (i.e. '/'). See the
   settings/manifest.txt.example file for examples.
 
