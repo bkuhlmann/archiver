@@ -6,25 +6,25 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
-# Table of Contents
+## Table of Contents
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Setup](#setup)
-- [Usage](#usage)
-  - [Cron](#cron)
-  - [SSH](#ssh)
-  - [Troubleshooting](#troubleshooting)
-- [Versioning](#versioning)
-- [Code of Conduct](#code-of-conduct)
-- [Contributions](#contributions)
-- [License](#license)
-- [History](#history)
-- [Credits](#credits)
+  - [Features](#features)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Usage](#usage)
+    - [Cron](#cron)
+    - [SSH](#ssh)
+    - [Troubleshooting](#troubleshooting)
+  - [Versioning](#versioning)
+  - [Code of Conduct](#code-of-conduct)
+  - [Contributions](#contributions)
+  - [License](#license)
+  - [History](#history)
+  - [Credits](#credits)
 
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
-# Features
+## Features
 
 - Uses rsync for reliable, compressed, and fast backups.
 - Uses date/time-stamped backup folders by default.
@@ -33,12 +33,12 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 - Supports customizable settings for defining the local machine and remote server to backup to.
 - Supports customizable file manifest (whitelist) for defining what files and directories to backup.
 
-# Requirements
+## Requirements
 
 0. A UNIX-system capable of running rsync.
 0. Knowledge of shell scripts, cron, and SSH.
 
-# Setup
+## Setup
 
 Open a terminal window and execute one of the following setup sequences depending on your version
 preference:
@@ -73,7 +73,7 @@ customization. The following is a breakdown of each setting file and how to use 
   file/directory paths based off the root directory (i.e. '/'). See the
   settings/manifest.txt.example file for examples.
 
-# Usage
+## Usage
 
 Type the following from the command line to run:
 
@@ -89,7 +89,7 @@ Running the `bin/run` script will present the following options:
 The options prompt can be skipped by passing the desired option directly to the `bin/run` script.
 For example, executing `bin/run s` will perform setup for the current machine.
 
-## Cron
+### Cron
 
 Once backups are configured and running properly, add this script to your
 [crontab](https://en.wikipedia.org/wiki/Crontab) for daily backup automation. Example:
@@ -98,7 +98,7 @@ Once backups are configured and running properly, add this script to your
 
 ...which translates to running the script at 1am every morning.
 
-## SSH
+### SSH
 
 To bypass the password prompt, install your public key on the backup server so cron does not have
 authentication issues when performing a backup (assuming you have a public key located at the
@@ -114,7 +114,7 @@ file does not already exists):
 That's it! For more info on SSH key generation, check out the
 [GitHub Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys) page.
 
-## Troubleshooting
+### Troubleshooting
 
 - SSH Connection Closed - If using a OSX backup server this will happen when the user you are
   logging in as doesn't have remote access permission. Here are the steps to fix:
@@ -126,7 +126,7 @@ That's it! For more info on SSH key generation, check out the
 - Rsync Error 23 - If you see this in the backup log, it is most likely because the source
   file/directory no longer exists. Update your manifest.txt to fix accordingly.
 
-# Versioning
+## Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
@@ -134,26 +134,26 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-# Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
 participating in this project you agree to abide by its terms.
 
-# Contributions
+## Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-# License
+## License
 
 Copyright (c) 2013 [Alchemists](https://www.alchemists.io).
 Read [LICENSE](LICENSE.md) for details.
 
-# History
+## History
 
 Read [CHANGES](CHANGES.md) for details.
 Built with [Bashsmith](https://github.com/bkuhlmann/bashsmith).
 
-# Credits
+## Credits
 
 Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
 [Alchemists](https://www.alchemists.io).
