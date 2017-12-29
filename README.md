@@ -32,7 +32,8 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 - Enforces backup limits so only a max number of backups can exist.
 - Supports automatic full and incremental backups.
 - Supports customizable settings for defining the local machine and remote server to backup to.
-- Supports customizable file manifest (whitelist) for defining what files and directories to backup.
+- Supports customizable file manifest (include list) for defining what files and directories to
+  backup.
 
 ## Requirements
 
@@ -70,7 +71,7 @@ customization. The following is a breakdown of each setting file and how to use 
       stored).
     - BACKUP_ROOT - Root path for all backup folders on backup server for current machine.
     - BACKUP_LIMIT - The max number of backups to keep at a time.
-- ~/.config/archiver/manifest.txt - Defines all files to be backed up (whitelist). Use absolute
+- ~/.config/archiver/manifest.txt - Defines all files to be backed up (include list). Use absolute
   file/directory paths based off the root directory (i.e. '/'). See the
   settings/manifest.txt.example file for examples.
 
