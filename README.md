@@ -1,7 +1,6 @@
 # Archiver
 
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/archiver.svg?style=svg)](https://circleci.com/gh/bkuhlmann/archiver)
-[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 Shell scripts for the automated backup of UNIX-based operation systems.
 
