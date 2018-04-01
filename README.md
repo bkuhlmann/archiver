@@ -48,7 +48,7 @@ Current Version (stable):
 
     git clone https://github.com/bkuhlmann/archiver.git
     cd archiver
-    git checkout v6.0.0
+    git checkout 6.1.0
 
 Master Version (unstable):
 
