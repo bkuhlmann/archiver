@@ -1,4 +1,4 @@
-# v6.1.0 (2018-04-01)
+# 6.1.0 (2018-04-01)
 
 - Updated README license information.
 - Updated to Circle CI 2.0.0 configuration.
@@ -6,7 +6,7 @@
 - Updated to Ruby 2.5.1.
 - Removed Patreon badge from README.
 
-# v6.0.0 (2018-01-01)
+# 6.0.0 (2018-01-01)
 
 - Added Gemfile.lock to .gitignore.
 - Updated Gemfile.lock file.
@@ -20,7 +20,7 @@
 - Updated to Ruby 2.5.0.
 - Removed black/white lists (use include/exclude lists instead).
 
-# v5.0.0 (2017-08-27)
+# 5.0.0 (2017-08-27)
 
 - Added Git Cop support.
 - Added versioning section to README.
@@ -36,7 +36,7 @@
 - Updated to Git Cop 1.6.0.
 - Removed CHANGELOG.md (use CHANGES.md instead).
 
-# v4.0.0 (2016-10-11)
+# 4.0.0 (2016-10-11)
 
 - Fixed Bash script header to dynamically load correct environment.
 - Fixed contributing guideline links.
@@ -47,7 +47,7 @@
 - Removed `run.sh` (use `bin/run` instead).
 - Refactored run scripts to use break statements.
 
-# v3.3.0 (2015-12-13)
+# 3.3.0 (2015-12-13)
 
 - Fixed hanging script with invalid option.
 - Added Bashsmith generation to README history.
@@ -61,13 +61,13 @@
 - Refactored script source from functions to lib folder.
 - Refactored shell scripts to remove deprecated function definition.
 
-# v3.2.0 (2015-01-01)
+# 3.2.0 (2015-01-01)
 
 - Updated README, CHANGELOG, LICENSE, and CONTRIBUTING documentation.
 - Added Bash strict mode.
 - Added preservation of file permissions.
 
-# v3.1.0 (2014-05-04)
+# 3.1.0 (2014-05-04)
 
 - Fixed bash script header.
 - Refactored scripts to enable better error checking.
@@ -76,13 +76,13 @@
 - Refactored scripts to use  instead of backticks  for command substitution.
 - Refactored scripts to use printf instead of echo.
 
-# v3.0.0 (2013-11-05)
+# 3.0.0 (2013-11-05)
 
 - Fixed backup root path to be / instead of $HOME.
 - Fixed incremental backups so they are based off the previous backup rather than the "base" directory.
 - Added the --numeric-ids, --links, --hard-links, --delete-excluded, and --one-file-system rsync options.
 
-# v2.1.0 (2013-08-11)
+# 2.1.0 (2013-08-11)
 
 - Fixed bug where backup log would not be copied correctly to the 'base' backup folder for new machine backups.
 - Fixed bug when ~/.archiver directory doesn't exist and settings are not installed properly.
@@ -97,7 +97,7 @@
 - Applied minor readability tweaks to the README.
 - Added SSH connection closed troubleshooting tips to the README.
 
-# v2.0.0 (2013-08-07)
+# 2.0.0 (2013-08-07)
 
 - Added Troubleshooting section to README.
 - Added Crontab setup and examples to README.
@@ -106,6 +106,6 @@
 - Added automatic backup cleanup and max limits (only the oldest are destroyed when limit is reached).
 - Enchanced backup process to detect if base directory exits and create (if necessary).
 
-# v1.0.0 (2013-08-04)
+# 1.0.0 (2013-08-04)
 
 - Initial version.
