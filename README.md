@@ -36,8 +36,8 @@ Shell scripts for the automated backup of UNIX-based operation systems.
 
 ## Requirements
 
-0. A UNIX-system capable of running rsync.
-0. Knowledge of shell scripts, cron, and SSH.
+1. A UNIX-system capable of running rsync.
+1. Knowledge of shell scripts, cron, and SSH.
 
 ## Setup
 
