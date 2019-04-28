@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="archiver.png" alt="Archiver Icon"/>
+</p>
+
 # Archiver
 
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/archiver.svg?style=svg)](https://circleci.com/gh/bkuhlmann/archiver)
