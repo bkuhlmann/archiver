@@ -1,3 +1,8 @@
+# 6.3.1 (2019-05-01)
+
+- Added project icon to README.
+- Updated to Ruby 2.6.3.
+
 # 6.3.0 (2019-04-01)
 
 - Updated to Ruby 2.6.1.
