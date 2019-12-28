@@ -1,13 +1,9 @@
 #! /usr/bin/env bash
 
-# DESCRIPTION
-# Executes the command line interface.
-
-# SETTINGS
-set -o nounset # Exit, with error message, when attempting to use an undefined variable.
-set -o errexit # Abort script at first error, when a command exits with non-zero status.
-set -o pipefail # Returns exit status of the last command in the pipe that returned a non-zero return value.
-IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
 
 export ARCHIVER_HOME="$HOME/.config/archiver"
 export ARCHIVER_SETTINGS="$ARCHIVER_HOME/settings.sh"
@@ -19,11 +15,9 @@ export BACKUP_SERVER_CONNECTION="$BACKUP_USER@$BACKUP_SERVER"
 export BACKUP_PATH="$BACKUP_ROOT/$BACKUP_NAME"
 export BACKUP_LOG="/tmp/$BACKUP_MACHINE-$BACKUP_NAME-backup.txt"
 
-# LIBRARY
 source lib/utilities.sh
 source lib/options.sh
 
-# EXECUTION
 while true; do
   if [[ $# == 0 ]]; then
     printf "\nUsage: run OPTION\n"
