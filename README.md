@@ -16,6 +16,7 @@ Shell scripts for the automated backup of UNIX-based operation systems.
   - [Requirements](#requirements)
   - [Setup](#setup)
   - [Usage](#usage)
+    - [Configuration](#configuration)
     - [Cron](#cron)
     - [SSH](#ssh)
     - [Troubleshooting](#troubleshooting)
@@ -59,6 +60,24 @@ Master Version (unstable):
     git clone https://github.com/bkuhlmann/archiver.git
     cd archiver
 
+## Usage
+
+Type the following from the command line to run:
+
+    bin/run
+
+Running the `bin/run` script will present the following options:
+
+    s: Setup current machine.
+    b: Backup to remote server.
+    c: Clean backups (enforces backup limit).
+    q: Quit/Exit.
+
+The options prompt can be skipped by passing the desired option directly to the `bin/run` script.
+For example, executing `bin/run s` will perform setup for the current machine.
+
+### Configuration
+
 Applying machine-specific settings is required prior to performing a backup. The shell script (see
 Usage section below for details) will install templates to get you started but will require further
 customization. The following is a breakdown of each setting file and how to use it:
@@ -77,22 +96,6 @@ customization. The following is a breakdown of each setting file and how to use 
 - ~/.config/archiver/manifest.txt - Defines all files to be backed up (include list). Use absolute
   file/directory paths based off the root directory (i.e. '/'). See the
   settings/manifest.txt.example file for examples.
-
-## Usage
-
-Type the following from the command line to run:
-
-    bin/run
-
-Running the `bin/run` script will present the following options:
-
-    s: Setup current machine.
-    b: Backup to remote server.
-    c: Clean backups (enforces backup limit).
-    q: Quit/Exit.
-
-The options prompt can be skipped by passing the desired option directly to the `bin/run` script.
-For example, executing `bin/run s` will perform setup for the current machine.
 
 ### Cron
 
