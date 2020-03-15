@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="archiver.png" alt="Archiver Icon"/>
+  <img src="https://www.alchemists.io/images/projects/archiver/icon.png" alt="Archiver Icon"/>
 </p>
 
 # Archiver
