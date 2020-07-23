@@ -36,7 +36,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/archiver.git
 cd archiver
-git checkout 6.5.0
+git checkout 6.5.1
 ----
 
 === Development
