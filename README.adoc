@@ -28,8 +28,6 @@ toc::[]
 
 == Setup
 
-=== Production
-
 To install, run:
 
 [source,bash]
@@ -37,16 +35,6 @@ To install, run:
 git clone https://github.com/bkuhlmann/archiver.git
 cd archiver
 git checkout 6.5.1
-----
-
-=== Development
-
-To contribute, run:
-
-[source,bash]
-----
-git clone https://github.com/bkuhlmann/archiver.git
-cd archiver
 ----
 
 == Usage
@@ -138,6 +126,16 @@ link:https://help.github.com/articles/generating-ssh-keys[GitHub Generating SSH 
    backup access.
 * Rsync Error 23 - If you see this in the backup log, it is most likely because the source
   file/directory no longer exists. Update your manifest.txt to fix accordingly.
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/archiver.git
+cd archiver
+----
 
 == Versioning
 
