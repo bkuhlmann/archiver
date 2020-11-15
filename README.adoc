@@ -34,7 +34,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/archiver.git
 cd archiver
-git checkout 6.5.1
+git checkout 6.6.0
 ----
 
 == Usage
