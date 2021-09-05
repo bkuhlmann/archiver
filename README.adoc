@@ -7,7 +7,9 @@
 [link=https://circleci.com/gh/bkuhlmann/archiver]
 image::https://circleci.com/gh/bkuhlmann/archiver.svg?style=svg[Circle CI Status]
 
-Shell scripts for the automated backup of UNIX-based operation systems.
+Provides customizable shell scripts for the automated backup of UNIX-based operation systems. These
+scripts are useful when you have available remote server storage you can backup your primary system
+too.
 
 toc::[]
 
@@ -24,7 +26,7 @@ toc::[]
 == Requirements
 
 . A UNIX-system capable of running rsync.
-. Knowledge of shell scripts, cron, and SSH.
+. Knowledge of shells, scripting, cron, and SSH.
 
 == Setup
 
@@ -117,7 +119,7 @@ link:https://help.github.com/articles/generating-ssh-keys[GitHub Generating SSH 
 
 === Troubleshooting
 
-* SSH Connection Closed - If using a OSX backup server this will happen when the user you are
+* SSH Connection Closed - If using a macOS backup server this will happen when the user you are
   logging in as doesn't have remote access permission. Here are the steps to fix:
 ** Login to the OSX backup server.
 ** Open System Preferences
