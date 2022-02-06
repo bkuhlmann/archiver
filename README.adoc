@@ -4,9 +4,6 @@
 
 = Archiver
 
-[link=https://circleci.com/gh/bkuhlmann/archiver]
-image::https://circleci.com/gh/bkuhlmann/archiver.svg?style=svg[Circle CI Status]
-
 Provides customizable shell scripts for the automated backup of UNIX-based operation systems. These
 scripts are useful when you have available remote server storage you can backup your primary system
 too.
