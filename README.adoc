@@ -33,7 +33,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/archiver.git
 cd archiver
-git checkout 8.1.5
+git checkout 8.1.6
 ----
 
 == Usage
