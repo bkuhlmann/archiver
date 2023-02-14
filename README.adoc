@@ -85,7 +85,7 @@ link:https://en.wikipedia.org/wiki/Crontab[crontab] for daily backup automation.
 
 [source,bash]
 ----
-- 1 - - - cd $HOME/Dropbox/Development/archiver && bin/run b 2>&1
+* 1 * * * cd $HOME/Dropbox/Development/archiver && bin/run b 2>&1
 ----
 
 ...which translates to running the script at 1am every morning.
