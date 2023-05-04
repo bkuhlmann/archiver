@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: Please use the following metadata when citing this project in your work.
 title: Archiver
-abstract: Provides customizable shell scripts for the automated backup of UNIX-based operation systems.
+abstract: Shell scripts for automated backup of UNIX-based operation systems.
 version: 8.2.3
 license: Hippocratic-2.1
 date-released: 2023-04-30
