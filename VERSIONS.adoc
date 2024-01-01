@@ -1,5 +1,12 @@
 = Versions
 
+== 9.0.0 (2024-01-01)
+
+* Added Rakefile quality task - Brooke Kuhlmann
+* Updated Circle CI step names - Brooke Kuhlmann
+* Updated gem dependencies - Brooke Kuhlmann
+* Updated to Ruby 3.3.0 - Brooke Kuhlmann
+
 == 8.2.5 (2023-10-26)
 
 * Added Debug gem - Brooke Kuhlmann
