@@ -4,6 +4,8 @@
 
 = Archiver
 
+⚠️ *This project is deprecated and will be fully destroyed on 2025-03-05.* ⚠️
+
 Provides customizable shell scripts for the automated backup of UNIX-based operation systems. These
 scripts are useful when you have available remote server storage you can backup your primary system
 too.
