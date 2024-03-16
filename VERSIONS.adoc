@@ -1,5 +1,9 @@
 = Versions
 
+== 9.1.1 (2024-03-16)
+
+* 🟢 Added project deprecation warning - Brooke Kuhlmann
+
 == 9.1.0 (2024-03-03)
 
 * 🔼 Updated RuboCop to use XDG local configuration - Brooke Kuhlmann

@@ -35,7 +35,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/archiver.git
 cd archiver
-git checkout 9.1.0
+git checkout 9.1.1
 ----
 
 == Usage
